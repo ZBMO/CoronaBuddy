@@ -1,0 +1,2 @@
+# CoronaBuddy
+feel-good bot
