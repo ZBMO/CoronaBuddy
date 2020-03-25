@@ -4,14 +4,17 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CovidStats {
 
-    @JsonProperty("Total")
-    private Number total;
+    private Number Total;
 
     public Number getTotal() {
-        return total;
+        return Total;
+    }
+
+    public CovidStats(Number Total) {
+        this.Total = Total;
     }
 
     public void setTotal(Number total) {
-        this.total = total;
+        this.Total = total;
     }
 }

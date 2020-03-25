@@ -1,6 +1,8 @@
 package com.Bench.CoronaBuddy;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -16,21 +18,32 @@ import java.util.concurrent.atomic.AtomicLong;
 @Service
 public class GreetingService {
 
-    final String uri = "https://api.covid19api.com/total/country/us/status/confirmed";
-
+//    final String uri = "https://api.covid19api.com/total/country/us/status/confirmed";
+    final String uri = "https://api.covid19api.com/stats";
 
     public String getGreeting() throws Exception {
-        HttpResponse<String> response = JSONBodyAsMap(URI.create(uri));
-        System.out.println(response);
-        return response.body().toString();
+        var total = getUSTotalCases();
+        return "total cases: " + total;
     }
 
-    private HttpResponse<String> JSONBodyAsMap(URI uri) throws Exception {
-        HttpRequest request = HttpRequest.newBuilder(uri)
+    private int getUSTotalCases() throws Exception {
+
+        var covidStats = getUSConfirmedCases();
+
+        return covidStats.getTotal().intValue();
+    }
+
+    private CovidStats getUSConfirmedCases() throws Exception {
+
+        HttpRequest request = HttpRequest.newBuilder(URI.create(uri))
                 .header("Accept", "application/json")
                 .build();
 
-        return HttpClient.newHttpClient()
+        HttpResponse<String> response = HttpClient
+                .newHttpClient()
                 .send(request, HttpResponse.BodyHandlers.ofString());
+
+        CovidStats covidStats = new Gson().fromJson(response.body(), CovidStats.class);
+        return covidStats;
     }
 }
