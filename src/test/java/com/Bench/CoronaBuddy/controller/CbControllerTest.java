@@ -1,6 +1,7 @@
-package com.Bench.CoronaBuddy;
+package com.Bench.CoronaBuddy.controller;
 
 
+import com.Bench.CoronaBuddy.service.SummaryService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -31,5 +32,4 @@ public class CbControllerTest {
         //then
         assertThat(controllerResponse.equalsIgnoreCase("total cases: 100"));
     }
-
 }

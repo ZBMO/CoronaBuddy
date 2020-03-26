@@ -1,5 +1,6 @@
-package com.Bench.CoronaBuddy;
+package com.Bench.CoronaBuddy.service;
 
+import com.Bench.CoronaBuddy.model.CovidStats;
 import com.google.gson.Gson;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,9 @@ import java.net.http.HttpResponse;
 
 @Service
 public class SummaryService {
+
+    public SummaryService() {
+    }
 
     final String uri = "https://api.covid19api.com/stats";
 

@@ -1,4 +1,4 @@
-package com.Bench.CoronaBuddy;
+package com.Bench.CoronaBuddy.model;
 
 public class CovidStats {
 
