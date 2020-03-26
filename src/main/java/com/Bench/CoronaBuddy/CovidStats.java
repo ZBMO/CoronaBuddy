@@ -1,7 +1,5 @@
 package com.Bench.CoronaBuddy;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class CovidStats {
 
     private Number Total;
