@@ -1,6 +1,4 @@
-package com.Bench.CoronaBuddy;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
+package com.Bench.CoronaBuddy.model;
 
 public class CovidStats {
 
