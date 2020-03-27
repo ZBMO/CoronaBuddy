@@ -24,10 +24,11 @@ public class CbControllerTest {
     public void getUSSummary() throws Exception {
         //given
         String totalCasesResponse = "total cases: 100";
-        when(summaryService.getTotalUSCases()).thenReturn(totalCasesResponse);
+        String countryName = "US";
+        when(summaryService.getTotalCases(countryName)).thenReturn(totalCasesResponse);
 
         //when
-        String controllerResponse = cbController.getUSSummary();
+        String controllerResponse = cbController.getSummary(countryName);
 
         //then
         assertThat(controllerResponse.equalsIgnoreCase("total cases: 100"));
